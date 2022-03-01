@@ -48,7 +48,7 @@ const displayPhone = (data) => {
 
 //  Get the phone Details
 const phoneDetails = phoneId => {
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneId.slug}`;
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
     .then(res => res.json())
     .then(info => displayDetails(info.data));
@@ -63,9 +63,11 @@ const displayDetails = singlePhone =>{
     <div class="card" style="width: 18rem;">
     <img src="${singlePhone.image}" class="card-img-top" alt="...">
     <div class="card-body">
-        <h3 class="card-title">${singlePhone.phone_name}</h3>
-        <h5>Brand: ${singlePhone.brand}</h5>
-        <p>${singlePhone.mainFeatures}</p>
+    <h5> ${singlePhone.brand}</h5>
+        <h3 class="card-title">${singlePhone.name}</h3>
+        <p>${singlePhone.releaseDate}</p>
+        <p>${singlePhone.mainFeatures.storage}</p>
+        <p>${singlePhone.mainFeatures.chipSet}</p>
         <a href="${singlePhone.others}" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
