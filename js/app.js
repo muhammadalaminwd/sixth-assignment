@@ -37,7 +37,7 @@ const displayPhone = (data) => {
             <div class="card-body">
             <h3 class="card-title">${phone.phone_name}</h3>
             <h5>Category: ${phone.brand}</h5>
-            <button  onclick="seeDetails(${phone.others})" class="btn btn-primary">See Details</button>
+            <button  onclick="seeDetails(${phone.mainFeatures})" class="btn btn-primary">Phone Details</button>
             </div>
         </div>
             `;
@@ -45,3 +45,25 @@ const displayPhone = (data) => {
         });
     }
 };
+
+//  Get the phone Details
+const phoneDetails = phoneId => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDetails(data.mainFeatures))
+}
+
+// Display the phone Details
+const displayDetails = singleItem =>{
+    phoneContainer.innerHTML = `
+    <div class="card" style="width: 18rem;">
+    <img src="${singleItem.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h3 class="card-title">${singleItem.phone_name}</h3>
+        <h5>Category: ${singleItem.brand}</h5>
+        <p>${singleItem.mainFeatures}</p>
+    </div>
+  </div>
+    `
+}
