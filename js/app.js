@@ -32,7 +32,7 @@ const displayPhone = (data) => {
         data?.forEach((phone) => {
             const div = document.createElement("div");
             div.innerHTML = `
-        <div class="card" style="width: 18rem;">
+        <div class="card mb-3" style="width: 18rem;">
             <img src="${phone.image}" class="card-img-top" alt="...">
             <div class="card-body">
             <h3 class="card-title">${phone.phone_name}</h3>
